@@ -628,7 +628,7 @@
     function keepSearchTriesOnServerOverLoadRedirect() {}
 
 
-    //software j is me budd. 
+    //software j is me budd ...good luck
 
 
 
