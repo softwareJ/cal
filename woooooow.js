@@ -328,7 +328,7 @@
 
         var originalSet = ["6am", "9am", "3pm", "7pm"];  
                   
-        for(let i = 0; i < alottedSlots.length; i++) { //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2
+        for(let i = 0; i < alottedSlots.length; i++) { //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)
 
             if(stopCount === originalSet.length) { break; }
 
@@ -394,7 +394,7 @@
 
         var stopCount = 0;
 
-        for(let i = 0; i < alottedSlots.length; i++) {  //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2
+        for(let i = 0; i < alottedSlots.length; i++) {  //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)
 		
             if(stopCount === originalSet.length) { break; };
 
