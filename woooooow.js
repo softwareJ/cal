@@ -5,21 +5,35 @@
    //author -- me -- AT-AIN B-BY
 
     // user -- import functions and configuration object
+
     let calendar = import("train-cal-69"); 
+
     console.log(calendar.config); //empty config object - with keys
 
     calendar.config = {
+	    
 	cal: document.getElementById("calendar"), //load calendar here
+	    
 	next: document.getElementById("next"), //button
+	    
 	back: document.getElementById("back"), //button
+	    
 	to: document.getElementById("to"), //button
+	    
 	search: document.getElementById("search"), //input
+	    
 	submit: document.getElementById("submit"), //button
+	    
 	load: document.getElementById("load"), //whether to load persisted
+	    
 	listedAs: document.getElementById("errorBooked"), //displays correct value where necessart
+	    
 	timeList: ["3am", "3:30am" ...], // this is O(1) * timelist for each load in when change arr to object
+	    
 	hideBackButton: () => { option to hide back button when on current month },
+	    
 	hide past days: () => { option to hide passed days for current month and year }
+
     }    
     
    
