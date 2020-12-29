@@ -1,9 +1,14 @@
 
-     //turning this into a plugin called train-cal-69 -- quick calendar that is accurate and easy to set up --- all you have to do is define your layout and add buttons
+   //calendar plugin im making for table cell cals. should change datestring to date functions but... datestring might lower big o ... im not sure but thats what i thought. i doubt it now thinking aboout it
+   //a persisted calendar plugin that takes to account even the time
+   //the back end will be only one table with a static set of rows 
+   //author -- me -- AT-AIN B-BY
 
-    //vonfigure dom properties -- replace any elementById with the elements here
-    //going to create two different versions of this. tabls cell and regular
-    let config = {
+    // user -- import functions and configuration object
+    let calendar = import("train-cal-69"); 
+    console.log(calendar.config); //empty config object - with keys
+
+    calendar.config = {
 	cal: document.getElementById("calendar"), //load calendar here
 	next: document.getElementById("next"), //button
 	back: document.getElementById("back"), //button
@@ -11,9 +16,14 @@
 	search: document.getElementById("search"), //input
 	submit: document.getElementById("submit"), //button
 	load: document.getElementById("load"), //whether to load persisted
-	listedAs: document.getElementById("errorBooked") //displays correct value where necessart
-	// add anything else
+	listedAs: document.getElementById("errorBooked"), //displays correct value where necessart
+	timeList: ["3am", "3:30am" ...], // this is O(1) * timelist for each load in when change arr to object
+	hideBackButton: () => { option to hide back button when on current month },
+	hide past days: () => { option to hide passed days for current month and year }
     }    
+    
+   
+    ///////////////////////////////////////////////////////////////////////////////////////// -- everything else loaded below ... 
     
 	
     //globals for viewing and interacting with calendar
