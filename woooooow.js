@@ -31,9 +31,9 @@
 	    
 	timeList: ["3am", "3:30am" ...], // this is O(1) * timelist for each load in when change arr to object
 	    
-	hideBackButton: () => { option to hide back button when on current month },
+	hideBackButton: true, //call this at bottom of display...if true rid back buton -- if false -- dont rid back button
 	    
-	hidePastDays: () => { option to hide passed days for current month and year },
+	hidePastDays: true, //call this at bottom of display...if true rid back buton -- if false -- dont rid back button
 	    
 	postVar: "variable to post at"
 
