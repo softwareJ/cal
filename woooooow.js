@@ -1,5 +1,21 @@
 
+     //turning this into a plugin called train-cal-69 -- quick calendar that is accurate and easy to set up --- all you have to do is define your layout and add buttons
 
+    //vonfigure dom properties -- replace any elementById with the elements here
+    //going to create two different versions of this. tabls cell and regular
+    let config = {
+	cal: document.getElementById("calendar"), //load calendar here
+	next: document.getElementById("next"), //button
+	back: document.getElementById("back"), //button
+	to: document.getElementById("to"), //button
+	search: document.getElementById("search"), //input
+	submit: document.getElementById("submit"), //button
+	load: document.getElementById("load"), //whether to load persisted
+	listedAs: document.getElementById("errorBooked") //displays correct value where necessart
+	// add anything else
+    }    
+    
+	
     //globals for viewing and interacting with calendar
     let currentDate = new Date();
     let currentDayG = 1;
