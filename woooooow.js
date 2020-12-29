@@ -32,7 +32,9 @@
 	    
 	hideBackButton: () => { option to hide back button when on current month },
 	    
-	hide past days: () => { option to hide passed days for current month and year }
+	hidePastDays: () => { option to hide passed days for current month and year },
+	    
+	postVar: "variable to post at"
 
     }    
     
