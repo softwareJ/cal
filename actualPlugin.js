@@ -5,7 +5,7 @@
         //configure the calendar
         config = () => {
             this.init = this.getCalendar(new Date());
-            this.cal = null;
+            this.cal = document.getElementById("calendar");
             this.nextClick = document.getElementById("next"); //button
             this.backClick = document.getElementById("back"); //button  
             this.todayClick = document.getElementById("today"); //button
