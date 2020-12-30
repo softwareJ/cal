@@ -6,16 +6,16 @@
 
 class Calendar {
 
-        var defaultConfig = () => {
+        var defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) => {
             this.fileToGetBooked = false; //getBookedFile
             this.fileToPushAppointment = false; //appt file
             this.searchEmailFilePath = false,  //search email file
-            this.hideBackButton = false; //hideBackButton -- boolean
-            this.hidePastDays = false; //hidePassedDays -- boolean
+            this.hideBackButton = true; //hideBackButton -- boolean
+            this.hidePastDays = true; //hidePassedDays -- boolean
             this.redirectUrl = null; //url to go to
             this.dontshowForm = true; //if you should show form
             this.timeList = []; //final
-            this.redirectMessage = "message you want to show to your user on submission";
+            this.redirectMessage = "";
             this.triggerStart();
         }
 
@@ -33,8 +33,9 @@ class Calendar {
             this.triggerStart();
         }
         
-        //define css properties dynamically
+        //define css properties dynamically -- must be after trigger....
         style = ('wow: you suck; cool: you suck;') => {
+            //for classes just loop
             document.getElementById("nextButton").cssText = `${blah blah}`;
             document.getElementById("abackButton").cssText = `${blah blah}`;
         }
