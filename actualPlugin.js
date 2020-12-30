@@ -1,12 +1,12 @@
-    //first construcor will be there own constructor 
+//first construcor will be there own constructor 
     //next constructors will be default ones i create
     //cal is being hit twice. one time for table other for calendar. get rid of the hit for the table header..
     //chexk big o for split operations vs just using object functions for date
     //hit init first then define all buttons and stuff
 
-class Calendar {
+    class Calendar {
 
-        var defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) => {
+        defaultConfig = (getBookedFile, apptFile, searchEmailFile, redirectUrl, timeList, redirectMessage) => {
             this.fileToGetBooked = false; //getBookedFile
             this.fileToPushAppointment = false; //appt file
             this.searchEmailFilePath = false,  //search email file
@@ -34,10 +34,8 @@ class Calendar {
         }
         
         //define css properties dynamically -- must be after trigger....
-        style = ('wow: you suck; cool: you suck;') => {
-            //for classes just loop
-            document.getElementById("nextButton").cssText = `${blah blah}`;
-            document.getElementById("abackButton").cssText = `${blah blah}`;
+        style = (cssNext, cssBack, cssToday) => {
+            document.getElementById("nextButton").cssText = `${cssNext}`;
         }
 
         triggerStart = () => {
@@ -512,21 +510,4 @@ class Calendar {
     
     keepSearchTriesOnServerOverLoadRedirect() {}
 
-}
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-    
-
+    }
