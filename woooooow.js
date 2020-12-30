@@ -4,7 +4,7 @@
    //the back end will be only one table with a static set of rows 
    //author -- me -- AT-AIN B-BY
    //came up thats all me all me foreal\
-   //i put spaces between each ine to make the file look bigger so i look more professional
+   //i put spaces between each line to make the file look bigger so i look more professional
 
     // user -- import functions and configuration object
 
