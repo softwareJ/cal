@@ -8,7 +8,7 @@
 
     // user -- import functions and configuration object
 
-    let calendar = import("train-cal-69"); 
+    let calendar = require("train-cal-69"); 
 
     console.log(calendar.config); //empty config object - with keys
 
