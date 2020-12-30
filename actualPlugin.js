@@ -1,15 +1,12 @@
-    //hit init first then define all buttons and stuff
     //first construcor will be there own constructor 
     //next constructors will be default ones i create
     //cal is being hit twice. one time for table other for calendar. get rid of the hit for the table header..
-    //chexk big o for split operations vs just using object functions 
-    //hit init first then define all buttons and stuff
+    //chexk big o for split operations vs just using object functions for date
 
 class Calendar {
 
         //configure the calendar -- path: string, path: string, path: string, ui: boolean, ui: boolean, url: string message: string, dontshowForm: boolean 
         config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
-            alert("wow");
             this.fileToGetBooked = false; //getBookedFile
             this.fileToPushAppointment = false; //appt file
             this.searchEmailFilePath = false,  //search email file
@@ -23,7 +20,6 @@ class Calendar {
         }
 
         triggerStart = () => {
-            alert("cool");
             this.events(); 
             this.globals();
             this.getCalendar(new Date());
@@ -181,7 +177,7 @@ class Calendar {
     
     
     //move back in calendar
-    moveBack = () => {
+    back = () => {
         this.currentIndexOfMonthG === 0 ? (this.currentYearG -= 1, this.currentIndexOfMonthG = 11) : (this.currentIndexOfMonthG -= 1);
         this.getCalendar(new Date(this.currentYearG, this.currentIndexOfMonthG, 1));
     }
@@ -351,10 +347,10 @@ class Calendar {
     
     
     //go back to the calendar    
-    back = () => {
-        document.getElementById("toggleDisplayB").style.display = "none";
-        document.getElementById("toggleDisplay").style.display = "block";
-    }
+    //back = () => {
+        // document.getElementById("toggleDisplayB").style.display = "none";
+        // document.getElementById("toggleDisplay").style.display = "block";
+    //}
     
     
     //check errors and submit form
@@ -483,6 +479,13 @@ class Calendar {
     keepSearchTriesOnServerOverLoadRedirect() {}
 
 }
+
+
+
+
+
+
+    
 
 
 
