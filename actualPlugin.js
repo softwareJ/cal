@@ -1,33 +1,38 @@
-    //hit init first then define all buttons and stuff -- probably just going to have a default view 
+//hit init first then define all buttons and stuff
+//my calendar plugin -- not done
+//config is just the configuration options passed in for calendar... I will set some default constructors but config is what they want
 
-    let calendar =  class {
+class calendar {
 
-        //configure the calendar
-        config = () => {
-            this.init = this.getCalendar(new Date());
-            this.cal = document.getElementById("calendar");
-            this.nextClick = document.getElementById("next"); //button
-            this.backClick = document.getElementById("back"); //button  
-            this.todayClick = document.getElementById("today"); //button
-            this.searchKeyup = document.getElementById("searchKeyUp"); //input
-            this.fileToGetBooked = "file path"; //file path for getting bookings | getBooked -- get all booked values and insert into alotted slots
-            this.fileToPushAppointment = "file path"; //file path to insert appointment | insertIntoAppointment -- post the appointment time and information
-            this.searchEmailFilePath = "file path", //file path to search email | displayAppointmentTime -- when user searches email, they can search there time
-            this.timeList = []; // this is O(1) * timelist for each load in when change arr to object -- array
-            this.hideBackButton = false; //call this at bottom of display...if true rid back buton -- if false -- dont rid back button -- boolean
-            this.hidePastDays = false; //call this at bottom of display...if true rid back buton -- if false -- dont rid back button -- boolean
-            this.load = false; //whether to load persisted  
-            this.redirectUrl - null; //url to redirect to when the form is complete -- just hits the if statement you want -- make this optional -- or just remove and showw the message!
+        //configure the calendar -- path: string, path: string, path: string, ui: boolean, ui: boolean, url: string message: string, dontshowForm: boolean 
+        config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
+            this.fileToGetBooked = false; //getBookedFile
+            this.fileToPushAppointment = false; //appt file
+            this.searchEmailFilePath = false,  //search email file
+            this.hideBackButton = false; //hideBackButton -- boolean
+            this.hidePastDays = false; //hidePassedDays -- boolean
+            this.redirectUrl = null; //url to go to
+            this.dontshowForm = true; //if you should show form
+            this.timeList = []; //final
             this.redirectMessage = "message you want to show to your user on submission";
-            this.cssTemplate: "define your css template";
+            this.triggerStart;
+        }
+
+        //trigger everything
+        triggerStart = () => {
+            this.events; 
+            this.globals;
+            this.getCalendar(new Date());
         }
 
         //onclicks tied to next three functions
         events = () => {
-            this.todayClick.onclick = this.today;
-            this.nextClick.onclick = this.next;
-            this.backClick.onclick = this.back;  
-            this.searchKeyup = (e) => { this.searchEmail(e.target.value) };
+            this.fillSkeleton; 
+            this.cal = document.getElementById("calendar");
+            document.getElementById("today") = this.today;
+            document.getElementById("next") = this.next;
+            document.getElementById("back").onclick = this.back;  
+            document.getElementById("searchKeyUp").onkeyup = (e) => { this.searchEmail(e.target.value); }; //loaded on set
         }
 
         //set the globals
@@ -52,6 +57,34 @@
             nov: { month: 30, index: 10 },
             dec: { month: 31, index: 11 },
         }
+    }
+
+
+    fillSkeleton = () => {
+        this.cal = `
+        <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">monday</th>
+            <th scope="col">tuesday</th>
+            <th scope="col">wednsday</th>
+            <th scope="col">thursday</th>
+            <th scope="col">friday</th>
+            <th scope="col">saturday</th>
+            <th scope="col">sunday</th>
+          </tr>
+          <tr>
+          <button id = "next">next</button>
+          <button id = "back">back</button>
+          <button id = "today">today</button>
+          <input type = "text" id = "searchKeyUp"> </input>
+          </tr>
+        </thead>
+
+        <tbody id = "calendar">
+
+        </tbody>
+      </table>`;
     }
 
 
@@ -115,7 +148,7 @@
         elem.append(tr)
         document.getElementById("date").innerText = `${this.currentIndexOfMonthG+1}/${this.currentYearG} | ${this.currentMonthNameG.toUpperCase()} ${this.currentDayG} ${this.currentYearG}`;
 
-        this.load ? this.loadInTakenTimes() : this.showNoLoad("loading data not set..");
+        this.fileToGetBooked ? this.loadInTakenTimes() : this.showNoLoad("loading data not set.."); //doing this twice
         this.hideBackButton ? this.hideBackButtonNone() : this.showNoLoad("back button showing on same month and year..");
         this.hidePassedDays ? this.hidePassedDaysNone() : this.showNoLoad("passed days not showing on month and year..");
 
@@ -161,6 +194,8 @@
     
     //load in taken times for this month and year
     loadInTakenTimes = () => {
+
+        if(this.fileToGetBooked === false) { return };
         
         $.ajax({
             type: "POST",
@@ -195,14 +230,10 @@
     }
 
     //hide back button
-    hideBackButtonNone = () => {
-
-    }
+    hideBackButtonNone = () => {}
 
     //hide passed days
-    hidePassedDaysNone = () => {
-
-    }
+    hidePassedDaysNone = () => {}
     
     //on hover get booked events for each day
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
@@ -239,6 +270,9 @@
     
     //displayForm when click on cell
     showForm = (day, year, monthIndex, monthName) => {
+
+        if(this.dontshowForm === false) { return; }
+
         var date = new Date();
         var todayYear = parseInt(date.toString().split(" ")[3]);
         var todayMonthIndex = this.amountOfDays[date.toString().split(" ")[1].toLowerCase()].index; 
@@ -318,6 +352,8 @@
     
     //check errors and submit form
     submit = () => {
+
+        if(this.fileToPushAppointment === false) { return; }
         
         var day = document.getElementById("dayS");
         var dayName = document.getElementById("dayNameS");
@@ -368,6 +404,8 @@
     
     //search if an email exists and show appointment time and password and cancel button
     searchEmail = (email) => {
+
+        if(this.searchEmailFilePath === false) { return; }
         
         if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {  
             document.getElementById("removePassword") ? document.getElementById("removePassword").remove() : ""; 
@@ -436,14 +474,10 @@
     
     
     keepSearchTriesOnServerOverLoadRedirect() {}
-    
-    
-    liveChat() {}
 
 }
 
 
-export default calendar;
 
 
 
