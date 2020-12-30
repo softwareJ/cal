@@ -80,7 +80,6 @@ class calendar {
           <input type = "text" id = "searchKeyUp"> </input>
           </tr>
         </thead>
-
         <tbody id = "calendar">
 
         </tbody>
