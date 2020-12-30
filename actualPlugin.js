@@ -6,7 +6,7 @@
 class calendar {
 
         //configure the calendar -- path: string, path: string, path: string, ui: boolean, ui: boolean, url: string message: string, dontshowForm: boolean 
-        config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
+        config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm, arrayOfTimes) => {
             this.fileToGetBooked = false; //getBookedFile
             this.fileToPushAppointment = false; //appt file
             this.searchEmailFilePath = false,  //search email file
@@ -14,7 +14,7 @@ class calendar {
             this.hidePastDays = false; //hidePassedDays -- boolean
             this.redirectUrl = null; //url to go to
             this.dontshowForm = true; //if you should show form
-            this.timeList = []; //final -- have to get rid of splice and replace with push on originalSet..... timeList == originalSet ... poop hehe
+            this.timeList = []; //final -- have to get rid of splice and replace with push on originalSet..... timeList == originalSet ... poop hehe -- arrayOfTimes
             this.redirectMessage = "message you want to show to your user on submission";
             this.triggerStart;
         }
