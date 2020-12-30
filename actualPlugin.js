@@ -7,7 +7,7 @@
 class calendar {
 
         //configure the calendar -- path: string, path: string, path: string, ui: boolean, ui: boolean, url: string message: string, dontshowForm: boolean 
-        config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm, arrayOfTimes) => {
+        config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelistArr, redirectUrl, redirectMessage, dontshowForm) => {
             this.fileToGetBooked = false; //getBookedFile
             this.fileToPushAppointment = false; //appt file
             this.searchEmailFilePath = false,  //search email file
