@@ -1,6 +1,7 @@
     //hit init first then define all buttons and stuff
     //first construcor will be there own constructor 
     //next constructors will be default ones i create
+    //cal is being hit twice. one time for table other for calendar. get rid of the hit for the table header..
 
 class calendar {
 
