@@ -1,6 +1,4 @@
-//hit init first then define all buttons and stuff
-//my calendar plugin -- not done
-//config is just the configuration options passed in for calendar... I will set some default constructors but config is what they want
+    //hit init first then define all buttons and stuff
 
 class calendar {
 
@@ -18,7 +16,6 @@ class calendar {
             this.triggerStart;
         }
 
-        //trigger everything
         triggerStart = () => {
             this.events; 
             this.globals;
@@ -29,8 +26,8 @@ class calendar {
         events = () => {
             this.fillSkeleton; 
             this.cal = document.getElementById("calendar");
-            document.getElementById("today") = this.today;
-            document.getElementById("next") = this.next;
+            document.getElementById("today").onclick = this.today;
+            document.getElementById("next").onclick = this.next;
             document.getElementById("back").onclick = this.back;  
             document.getElementById("searchKeyUp").onkeyup = (e) => { this.searchEmail(e.target.value); }; //loaded on set
         }
