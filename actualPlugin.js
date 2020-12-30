@@ -1,4 +1,6 @@
     //hit init first then define all buttons and stuff
+    //first construcor will be there own constructor 
+    //next constructors will be default ones i create
 
 class calendar {
 
