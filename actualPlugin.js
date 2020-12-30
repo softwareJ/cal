@@ -2,8 +2,14 @@
     //next constructors will be default ones i create
     //cal is being hit twice. one time for table other for calendar. get rid of the hit for the table header..
     //chexk big o for split operations vs just using object functions for date
+    //hit init first then define all buttons and stuff
 
 class Calendar {
+
+        //define css properties dynamically
+        style = () => {
+            nextButton: document.getElementById("nextButton").cssText = `${blah blah}`;
+        }
 
         //configure the calendar -- path: string, path: string, path: string, ui: boolean, ui: boolean, url: string message: string, dontshowForm: boolean 
         config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
@@ -62,8 +68,9 @@ class Calendar {
 
 
     fillSkeleton = () => {
+        this.skeleton.style.cssText = `margin: auto; text-align: center`;
         this.skeleton.innerHTML = `
-        <table class="table table-dark">
+        <table class="table table-dark" style = "margin-right: auto; margin-left: auto; text-align: center; border-spacing: 0px">
         <thead>
           <tr>
             <th scope="col">monday</th>
@@ -76,10 +83,12 @@ class Calendar {
           </tr>
           <tr>
           <button id = "next">next</button>
-          <button id = "back">back</button>
-          <button id = "today">today</button>
-          <input type = "text" id = "searchKeyUp"> </input>
-          <small id = "date"> </small>
+          <button id = "back" style = "margin-left: 5px">back</button>
+          <button id = "today" style = "margin-left: 5px">today</button>
+          <input type = "text" style = "margin-left: 5px" id = "searchKeyUp"> </input>
+          <br>
+          <br>
+          <small id = "date" style = "margin-left: 5px"> </small>
           </tr>
         </thead>
         <tbody id = "calendar">
@@ -119,6 +128,11 @@ class Calendar {
             var th = document.createElement("TH");
             th.className = "infoBox";
             th.innerText = "x";
+            th.style.cssText = `            
+            padding: 7px;
+            border: 1px solid black;
+            width: 10px;
+            height: 10px;`;
             tr.append(th); 
             thCount+=1; 
 
@@ -137,6 +151,11 @@ class Calendar {
             var th = document.createElement("TH");
             th.className = `infoBox`;
             th.id = `highlight-${i}`;
+            th.style.cssText = `            
+            padding: 7px;
+            border: 1px solid black;
+            width: 10px;
+            height: 10px;`;
             th.innerText = i;
             th.onclick = () => { this.showForm(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG); };
             th.onmouseover = () => { this.addNumber(i); this.eliminateBookedEvents(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG);  }
@@ -257,7 +276,7 @@ class Calendar {
             return;
         }
 
-        var originalSet = ["6am", "9am", "3pm", "7pm"];   //var originalSet = this.timeList;
+        var originalSet = ["6am", "9am", "3pm", "7pm"];  
                   
         for(let i = 0; i < this.alottedSlots.length; i++) { //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)
             if(this.alottedSlots[i].day === day) { 
@@ -307,7 +326,7 @@ class Calendar {
         ${getDayName} ${monthName} ${day} ${year}
         </h1>`;
 
-        var originalSet = ["6am", "9am", "3pm", "7pm"];  //var originalSet = this.timelist
+        var originalSet = ["6am", "9am", "3pm", "7pm"];  
 
         for(let i = 0; i < this.alottedSlots.length; i++) {  //change array to object to reduce from N to O(1)*4 ...change indexOf to push to reduce 'N' to O(1) -- not really n^2 .. just do (day and time lookup for each in original set..if true then splice or push)	
             if(this.alottedSlots[i].day === day) {  
@@ -479,13 +498,6 @@ class Calendar {
     keepSearchTriesOnServerOverLoadRedirect() {}
 
 }
-
-
-
-
-
-
-    
 
 
 
