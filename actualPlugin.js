@@ -34,7 +34,7 @@ class Calendar {
         }
         
         //define css properties dynamically
-        style = () => {
+        style = ('wow: you suck; cool: you suck;') => {
             document.getElementById("nextButton").cssText = `${blah blah}`;
             document.getElementById("abackButton").cssText = `${blah blah}`;
         }
