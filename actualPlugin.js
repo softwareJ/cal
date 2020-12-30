@@ -3,11 +3,13 @@
     //next constructors will be default ones i create
     //cal is being hit twice. one time for table other for calendar. get rid of the hit for the table header..
     //chexk big o for split operations vs just using object functions 
+    //hit init first then define all buttons and stuff
 
-class calendar {
+class Calendar {
 
         //configure the calendar -- path: string, path: string, path: string, ui: boolean, ui: boolean, url: string message: string, dontshowForm: boolean 
-        config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelistArr, redirectUrl, redirectMessage, dontshowForm) => {
+        config = (getBookedFile, apptFile, searchEmailFile, hidePastDays, hideBackButton, timelist, redirectUrl, redirectMessage, dontshowForm) => {
+            alert("wow");
             this.fileToGetBooked = false; //getBookedFile
             this.fileToPushAppointment = false; //appt file
             this.searchEmailFilePath = false,  //search email file
@@ -15,20 +17,22 @@ class calendar {
             this.hidePastDays = false; //hidePassedDays -- boolean
             this.redirectUrl = null; //url to go to
             this.dontshowForm = true; //if you should show form
-            this.timeList = []; //final -- have to get rid of splice and replace with push on originalSet..... timeList == originalSet ... poop hehe -- arrayOfTimes. temp can replace this if splice
+            this.timeList = []; //final
             this.redirectMessage = "message you want to show to your user on submission";
-            this.triggerStart;
+            this.triggerStart();
         }
 
         triggerStart = () => {
-            this.events; 
-            this.globals;
+            alert("cool");
+            this.events(); 
+            this.globals();
             this.getCalendar(new Date());
         }
 
         //onclicks tied to next three functions
         events = () => {
-            this.fillSkeleton; 
+            this.skeleton = document.getElementById("skeleton");
+            this.fillSkeleton(); 
             this.cal = document.getElementById("calendar");
             document.getElementById("today").onclick = this.today;
             document.getElementById("next").onclick = this.next;
@@ -62,7 +66,7 @@ class calendar {
 
 
     fillSkeleton = () => {
-        this.cal = `
+        this.skeleton.innerHTML = `
         <table class="table table-dark">
         <thead>
           <tr>
@@ -79,10 +83,10 @@ class calendar {
           <button id = "back">back</button>
           <button id = "today">today</button>
           <input type = "text" id = "searchKeyUp"> </input>
+          <small id = "date"> </small>
           </tr>
         </thead>
         <tbody id = "calendar">
-
         </tbody>
       </table>`;
     }
@@ -138,8 +142,8 @@ class calendar {
             th.className = `infoBox`;
             th.id = `highlight-${i}`;
             th.innerText = i;
-            th.onclick = () => { showForm(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG); };
-            th.onmouseover = () => { addNumber(i); eliminateBookedEvents(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG);  }
+            th.onclick = () => { this.showForm(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG); };
+            th.onmouseover = () => { this.addNumber(i); this.eliminateBookedEvents(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG);  }
             tr.append(th);
             thCount+=1; 
 
@@ -154,6 +158,7 @@ class calendar {
 
     }
 
+    //show configuration properties not showing
     showNoLoad = (message) => {
         console.log(message);
     }
@@ -162,7 +167,7 @@ class calendar {
     today = () => {
         var date = new Date();
         var day = date.toString().split(" ")[2];
-        getCalendar(date);
+        this.getCalendar(date);
         var string = "highlight-"+day;
         document.getElementById(string).style.backgroundColor = "lightblue";
     }
@@ -171,14 +176,14 @@ class calendar {
     //move next in calendar
     next = () => {
         this.currentIndexOfMonthG === 11 ? (this.currentYearG += 1, this.currentIndexOfMonthG = 0) : (this.currentIndexOfMonthG += 1);
-        getCalendar(new Date(this.currentYearG, this.currentIndexOfMonthG, 1));
+        this.getCalendar(new Date(this.currentYearG, this.currentIndexOfMonthG, 1));
     }
     
     
     //move back in calendar
     moveBack = () => {
         this.currentIndexOfMonthG === 0 ? (this.currentYearG -= 1, this.currentIndexOfMonthG = 11) : (this.currentIndexOfMonthG -= 1);
-        getCalendar(new Date(this.currentYearG, this.currentIndexOfMonthG, 1));
+        this.getCalendar(new Date(this.currentYearG, this.currentIndexOfMonthG, 1));
     }
     
 
@@ -237,6 +242,8 @@ class calendar {
     
     //on hover get booked events for each day
     eliminateBookedEvents = (day, year, monthIndex, monthName) => {
+
+        if(this.alottedSlots.length === 0) { return }
         
         var date = new Date();
         var todayYear = parseInt(date.toString().split(" ")[3]);
@@ -476,6 +483,15 @@ class calendar {
     keepSearchTriesOnServerOverLoadRedirect() {}
 
 }
+
+
+
+
+
+
+    
+
+
 
 
 
