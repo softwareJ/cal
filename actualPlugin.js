@@ -15,7 +15,7 @@ class calendar {
             this.hidePastDays = false; //hidePassedDays -- boolean
             this.redirectUrl = null; //url to go to
             this.dontshowForm = true; //if you should show form
-            this.timeList = []; //final -- have to get rid of splice and replace with push on originalSet..... timeList == originalSet ... poop hehe -- arrayOfTimes
+            this.timeList = []; //final -- have to get rid of splice and replace with push on originalSet..... timeList == originalSet ... poop hehe -- arrayOfTimes. temp can replace this if splice
             this.redirectMessage = "message you want to show to your user on submission";
             this.triggerStart;
         }
