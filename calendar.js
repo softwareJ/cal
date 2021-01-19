@@ -9,6 +9,7 @@
 
 //maybe load in all events for the year at once... would avoid reading more data... if year change load in...
 
+//add in an animation for cell click gsap to replace toggle.... use same form. when click expand
 
 class quickCalFrontEnd {
       
