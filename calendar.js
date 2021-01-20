@@ -336,7 +336,7 @@ class quickCalFrontEnd {
             th.className = `infoBox`;
             th.id = `highlight-${i}`;
             th.innerText = i;
-            th.onclick = () => { this.showForm(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG); };
+            th.onclick = () => { this.showForm(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG); }; //expand this cell and insert a different form inside of cell
             th.onmouseover = () => { this.addNumber(i); this.eliminateBookedEvents(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG);  }
             tr.append(th);
             thCount+=1; 
