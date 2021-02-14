@@ -229,6 +229,7 @@ class quickCalFrontEnd {
             th.className = `infoBox`;
             th.id = `highlight-${i}`;
             th.innerText = i;
+            //should expand here and append form -- gsap -- run some animations on the elements displaying...
             th.onclick = () => { this.showForm(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG); };
             th.onmouseover = () => { this.addNumber(i); this.eliminateBookedEvents(i, this.currentYearG, this.currentIndexOfMonthG, this.currentMonthNameG);  }
             //add a draggable with some limitations
